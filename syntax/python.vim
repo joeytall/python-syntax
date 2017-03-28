@@ -404,6 +404,7 @@ if s:Enabled("g:python_highlight_builtin_objs")
   endif
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
+  syn keyword pythonSelf	self
 endif
 
 "
@@ -422,18 +423,20 @@ if s:Enabled("g:python_highlight_builtin_funcs")
     syn keyword pythonBuiltinFunc	ascii exec memoryview print
   endif
   syn keyword pythonBuiltinFunc	__import__ abs all any
-  syn keyword pythonBuiltinFunc	bin bool bytearray bytes
+  syn keyword pythonBuiltinFunc	bin bytearray bytes
   syn keyword pythonBuiltinFunc	chr classmethod cmp compile complex
   syn keyword pythonBuiltinFunc	delattr dict dir divmod enumerate eval
   syn keyword pythonBuiltinFunc	filter float format frozenset getattr
   syn keyword pythonBuiltinFunc	globals hasattr hash hex id
-  syn keyword pythonBuiltinFunc	input int isinstance
+  syn keyword pythonBuiltinFunc	input isinstance
   syn keyword pythonBuiltinFunc	issubclass iter len list locals map max
-  syn keyword pythonBuiltinFunc	min next object oct open ord
+  syn keyword pythonBuiltinFunc	min next oct open ord
   syn keyword pythonBuiltinFunc	pow property range
   syn keyword pythonBuiltinFunc	repr reversed round set setattr
   syn keyword pythonBuiltinFunc	slice sorted staticmethod str sum super tuple
-  syn keyword pythonBuiltinFunc	type vars zip
+  syn keyword pythonBuiltinFunc	vars zip
+
+  syn keyword pythonType        type int string str bool object __init__
 endif
 
 "
@@ -560,7 +563,10 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonBuiltinObj       Structure
   HiLink pythonBuiltinFunc      Function
 
-  HiLink pythonExClass          Structure
+  HiLink pythonSelf             Keyword
+  HiLink pythonType             Type
+
+  HiLink pythonExClass          Constant
 
   delcommand HiLink
 endif
